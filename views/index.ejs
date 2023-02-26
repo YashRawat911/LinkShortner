@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkShortner</title>
+</head>
+<style>
+    .short_button {
+        background-color: black;
+        color: white;
+        border-radius: 0px;
+    }
+    .short_button:hover {
+        background-color: rgb(77, 77, 77);
+        color: white;
+        border-radius: 0px;
+    }
+    .Name {
+        text-decoration: none;
+        color: black;
+    }
+    .Name:hover {
+        text-decoration: none;
+        color: rgb(49, 49, 49);
+    }
+</style>
+<body>
+    <input type="text" id="link" placeholder="Enter The Link">
+    <button onclick="short()" class="short_button">Short The Link!</button>
+    <h4>Made By <a class="Name" href="https://github.com/ItzCrazyKns">ItzCrazyKns</a></h4>
+</body>
+</html>
+
+<script>
+    const short = () => {
+        let link = encodeURIComponent(document.getElementById('link').value)
+        window.location.href = "/short?link=" + link
+    }
+</script>
