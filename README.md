@@ -6,3 +6,5 @@
 #### Then Do `npm i`
 #### Then Configure The Details In `config.js`
 #### Then Just Do `node index.js` And Ur Done!
+# Credits
+### This Project Is Created And Managed By ItzCrazyKns
