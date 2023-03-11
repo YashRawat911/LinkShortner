@@ -10,20 +10,30 @@ app.listen(config.port, () => {
 })
 
 app.get("/link:code", async (req,res) => {
-    let link = await get("links-" + req.params.code)
-    res.status(301).redirect(link)
+    try {
+        let link = await get("links-" + req.params.code)
+        res.status(301).redirect(link)
+    } catch(err) {
+        console.log(err)
+    }
+    
 })
 
 app.get("/short", async (req,res) => {
     if (!req.query.link) return
-
-    if (req.query.link.indexOf('http://') === 0 || req.query.link.indexOf('https://') === 0) {
+    
+    try {
+        if (req.query.link.indexOf('http://') === 0 || req.query.link.indexOf('https://') === 0) {
         const code = crypto.randomBytes(8).toString("hex");
     await set("links-" + code, req.query.link)
     res.send(`your link has been shortened to ${config.domain}${(config.port == 80) ? '': ":" + config.port}/link${code}`)
     } else {
         res.send("only absolute url's are supported")
     }
+    } catch(err) {
+        console.log(err)
+    }
+    
     
 })
 
